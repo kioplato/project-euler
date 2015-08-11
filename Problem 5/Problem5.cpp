@@ -16,5 +16,4 @@ int main(void)
 		}
 	}
 	printf("%d\n", number);	//printf function from stdio.h library. Use: to let the user know the outcome of the calculation.
-	return 0;
 }

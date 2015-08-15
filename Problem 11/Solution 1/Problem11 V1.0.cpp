@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int arr[20][20] = {
+int array[20][20] = {
                     {8,2,22,97,38,15,0,40,0,75,4,5,7,78,52,12,50,77,91,8},
                     {49,49,99,40,17,81,18,57,60,87,17,40,98,43,69,48,4,56,62,0},
                     {81,49,31,73,55,79,14,29,93,71,40,67,53,88,30,3,49,13,36,65},
@@ -25,59 +25,73 @@ int arr[20][20] = {
                   
 int main(void)
 {
-	int athrisma = 0;	//o parodikos ipologismos pou sigrinete me to megisto.
+	int sum = 1;	//o parodikos ipologismos pou sigrinete me to megisto.
 	int max = 0;		//megisto
 	
-	int grames;
-	int stiles;
+	int counter;
+	int lines;
+	int rows;
 	
-	for(grames = 0; grames < 20; grames++)
+	for(lines = 0; lines < 20; lines++)
 	{
-		for(stiles = 0; stiles < 16; stiles++)
+		for(rows = 0; rows < 16; rows++)
 		{
-			athrisma = arr[grames][stiles] * arr[grames][stiles+1] * arr[grames][stiles+2] * arr[grames][stiles+3];
-			if(athrisma > max)
+			sum = 1;		//because we want to seperate our calculations between groups of 4 numbers.
+			for(counter = 0; counter <= 3; counter++)
 			{
-				max = athrisma;
+				sum = sum * array[lines][rows + counter];
+			}
+			if(sum > max)
+			{
+				max = sum;
 			}
 		}
 	}
-	//printf("Max Horizontal:		%d\n", maxHor);
 	
-	for(stiles = 0; stiles < 20; stiles++)
+	for(rows = 0; rows < 20; rows++)
 	{
-		for(grames = 0; grames < 16; grames++)
+		for(lines = 0; lines < 16; lines++)
 		{
-			athrisma = arr[grames][stiles] * arr[grames+1][stiles] * arr[grames+2][stiles] * arr[grames+3][stiles];
-			if(athrisma > max)
+			sum = 1;
+			for(counter = 0; counter <= 3; counter++)
 			{
-				max = athrisma;
+				sum = sum * array[lines + counter][rows];
+			}
+			if(sum > max)
+			{
+				max = sum;
 			}
 		}
 	}
-	//printf("Max Vertical: 		%d\n", maxVer);
 
-	for(grames = 0; grames < 16; grames++)
+	for(lines = 0; lines < 16; lines++)
 	{
-		for(stiles = 0; stiles < 16; stiles++)
+		for(rows = 0; rows < 16; rows++)
 		{
-			athrisma = arr[grames][stiles] * arr[grames+1][stiles+1] * arr[grames+2][stiles+2] * arr[grames+3][stiles+3];
-			if(athrisma > max)
+			sum = 1;
+			for(counter = 0; counter <= 3; counter++)
 			{
-				max = athrisma;
+				sum = sum * array[lines + counter][rows + counter];
+			}
+			if(sum > max)
+			{
+				max = sum;
 			}
 		}
 	}
-	//printf("Max Diagonal:		%d\n", maxMD);
 	
-	for(grames = 0; grames < 16; grames++)
+	for(lines = 0; lines < 16; lines++)
 	{
-		for(stiles = 3; stiles < 20; stiles++)
+		for(rows = 3; rows < 20; rows++)
 		{
-			athrisma = arr[grames][stiles] * arr[grames+1][stiles-1] * arr[grames+2][stiles-2] * arr[grames+3][stiles-3];
-			if(athrisma > max)
+			sum = 1;
+			for(counter = 0; counter <= 3; counter++)
 			{
-				max = athrisma;
+				sum = sum * array[lines + counter][rows - counter];
+			}
+			if(sum > max)
+			{
+				max = sum;
 			}
 		}
 	}

@@ -18,40 +18,43 @@ int main(void)
 		printf("Provlima sto malloc tou arithmoi\n");
 		return 1;
 	}
-	
+	printf("ok v1");
 	protoi = malloc(1000000 * sizeof(int));
 	if(protoi == NULL)
 	{
 		printf("Provlima sto malloc tou protoi\n");
 		return 1;
 	}
+	printf("ok v2");
+	long long unsigned metritis;
 	
-	long long metritis;
-	
-	for(metritis = 0; metritis < sqrt(2000000); metritis++)
+	for(metritis = 0; metritis < 2000000; metritis++)
 	{
 		arithmoi[metritis] = metritis;
 	}
 	
-	long long counter;
-	
-	for(metritis = 2; metritis < sqrt(2000000); metritis++)
+	long long unsigned counter;
+	printf("ok v3");
+	for(metritis = 2; metritis < 2000000; metritis++)
 	{
-		if(metritis == 50000 || metritis == 100000 || metritis == 150000 || metritis == 250000 || metritis == 500000 || metritis == 1000000 || metritis == 1500000)
+		if(metritis == 50000 || metritis == 10000)
 		{
-			printf("Metritis:%d\n", metritis);
+			printf("%llu\n", metritis);
 		}
-		for(counter = (metritis+1); counter < sqrt(2000000); counter++)
-		{
-			if((counter % metritis) == 0)
+		if(arithmoi[metritis] != -1)
+		{	
+			for(counter = (metritis+1); counter < 2000000; counter++)
 			{
-				arithmoi[counter] = -1;
+				if((counter % metritis) == 0)
+				{
+					arithmoi[counter] = -1;
+				}
 			}
 		}
 	}
 	printf("Mpenei ston ksekatharismo twn protwn\n");
 	counter = 0;
-	for(metritis = 2; metritis < sqrt(2000000); metritis++)
+	for(metritis = 2; metritis < 2000000; metritis++)
 	{
 		if(arithmoi[metritis] != -1)
 		{
@@ -63,7 +66,7 @@ int main(void)
 	printf("Vgenei apo ton katharismo twn protwn\n");
 	protoi[counter] = -2;
 	counter = 1;
-	long long athrisma = 0;
+	long long unsigned athrisma = 0;
 	int current = protoi[0];
 	printf("Mpenei ston ipologismo tou athrismatos\n");
 	while(protoi[counter] != -2)
@@ -71,7 +74,7 @@ int main(void)
 		athrisma = athrisma + protoi[counter];
 		counter++;
 	}
-	printf("Athrisma/Sum:%d\n", athrisma);
+	printf("Athrisma/Sum:%llu\n", athrisma);
 	
 	return 0;
 }

@@ -18,34 +18,30 @@ int main(void)
 	
 	int counterA;
 	int counterB;
+	int next = 0;
 	printf("1/3\n");
 	for(counterA = 0; counterA < 200000; counterA++)
 	{
 		numbers[counterA] = counterA;
 	}
-	for(counterA = 2; counterA < 200000; counterA++)
-	{
-		for(counterB = (counterA + 1); counterB < 200000; counterB++)
-		{
-			if((counterB % counterA) == 0)
-			{
-				numbers[counterB] = -1;
-			}
-		}
-	}
-	printf("2/3\n");
-	counterB = 0;
-	for(counterA = 2; counterA < 200000; counterA++)
+	for(counterA = 2; counterA < 200000; counterA++)		//we are using eratosthenes sieve method.
 	{
 		if(numbers[counterA] != -1)
 		{
-			primes[counterB] = numbers[counterA];
-			counterB++;
+			for(counterB = (counterA + 1); counterB < 200000; counterB++)
+			{
+				if((counterB % counterA) == 0)
+				{
+					numbers[counterB] = -1;			//we check out any number that is multiple of a prime number so we wont store non-prime numbers into our array "primes".
+				}
+			}
+			primes[next] = numbers[counterA];		//we store all the primes into an array so we can have a refrence to them afterwards.
+			next++;
 		}
 	}
 	printf("3/3\n");
-	primes[counterB] = -2;
-	counterB = 1;
+	primes[next] = -2;
+	counterB = 0;
 	long long unsigned tempNumber = NUMBER;
 	int max = 0;
 	int current = primes[0];
@@ -53,11 +49,10 @@ int main(void)
 	{
 		if(tempNumber % current == 0)
 		{
-			tempNumber = tempNumber/current;
+			tempNumber = tempNumber/current;	//we divide the number and then store the prime divisor if its the max we have encountered so far.
 			counterB = 0;
 			if(current > max)
 			{
-				printf("%d\n", max);
 				max = current;
 			}
 		}

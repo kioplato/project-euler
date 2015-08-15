@@ -4,23 +4,24 @@
 int main()
 {
 	int primeArray[10000];
-	int NUMBER = 600851475;
+	const long long unsigned NUMBER = 600851475143;
+	long long unsigned tempNumber = NUMBER;
 	int divised;
 	int i = 0;
 	
-	for(int counter = 1; counter <= (NUMBER/2); counter++)
+	for(int counterA = 1; counterA <= (tempNumber/2); counterA++)
 	{
 		divised = 0;
-		for(int metritis = 1; metritis <= (NUMBER/2); metritis++)
+		for(int counterB = 1; counterB <= (tempNumber/2); counterB++)		//tempNumber divided by 2 because the NUMBER can't have any divisors bellow NUMBER/2. (did not know about sqrt(NUMBER) back then)
 		{
-			if(counter % metritis == 0)
+			if(counterA % counterB == 0)
 			{
 				divised++;
 			}
 		}
 		if(divised == 2)
 		{
-			primeArray[i] = counter;
+			primeArray[i] = counterA;
 			i++;
 		}
 	}

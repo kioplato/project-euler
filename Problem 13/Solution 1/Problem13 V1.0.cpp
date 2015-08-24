@@ -3,8 +3,8 @@
 
 int main(void)
 {
-	int grames;
-	int stiles;
+	int lines;
+	int rows;
 	
 	char str[5200] = "37107287533902102798797998220837590246510135740250\n\
 	46376937677490009712648124896970078050417018260538\n\
@@ -111,71 +111,65 @@ int main(void)
 	
 	int counter = 0;
 	
-	grames = 0;
-	stiles = 0;
+	lines = 0;
+	rows = 0;
 	while(str[counter] != '\0')
 	{
 		while(str[counter] != '\n' && str[counter] != '\0')
 		{
-			arr[grames][stiles] = (str[counter] - 48);
+			arr[lines][rows] = (str[counter] - 48);
 			counter++;
-			stiles++;
+			rows++;
 		}
 		if(str[counter] == '\n')
 		{
-			grames++;
-			stiles = 0;
+			lines++;
+			rows = 0;
 			counter++;
 			counter++;
 		}
 	}
-	int apotelesma[100];
+	int result[100];
 	
-	int ipolipo = 0;
-	int athrisma = 0;
+	int remaining = 0;
+	int sum = 0;
 	
-	int arithmos = 0;
+	int number = 0;
 	
 	int i = 0;
 	
-	for(stiles = 49; stiles >= 0; stiles--)
+	for(rows = 49; rows >= 0; rows--)
 	{
-		for(grames = 0; grames < 100; grames++)
+		for(lines = 0; lines < 100; lines++)
 		{
-			athrisma = athrisma + arr[grames][stiles];
+			sum = sum + arr[lines][rows];
 		}
-		athrisma = athrisma + ipolipo;
 		
-		if(athrisma >= 10)
+		sum = sum + remaining;
+		
+		if(sum >= 10)
 		{
-			arithmos = athrisma % 10;
-			ipolipo = (athrisma/10);
+			arithmos = sum % 10;
+			remaining = sum / 10;
 		}
-		//ta xorizw gia logous domhs.
-		if(athrisma <= 9)
+		
+		if(sum <= 9)
 		{
-			apotelesma[i] = athrisma;
-			ipolipo = 0;
+			result[i] = sum;
+			remaining = 0;
 		}
-		if(athrisma >= 10)
+		if(sum >= 10)
 		{
-			apotelesma[i] = arithmos;
+			result[i] = arithmos;
 		}
-		//printf("%d",athrisma);
-		//system("pause");
-		athrisma = 0;
-		if(stiles == 0)
+		sum = 0;
+		if(rows == 0)
 		{
-			ipolipo = ipolipo*10;
-			ipolipo = ipolipo + arithmos;
-			apotelesma[i] = ipolipo;
+			remaining = remaining * 10;
+			remaining = remaining + arithmos;
+			result[i] = remaining;
 		}
-		printf("%d", apotelesma[i]);
-		system("pause");
+		printf("%d\n", result[i]);
 		i++;
-	}
-	for(grames = 0; grames < i; grames++)
-	{
-		//printf("%d", apotelesma[grames]);
 	}
 }

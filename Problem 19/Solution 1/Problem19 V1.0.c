@@ -5,24 +5,24 @@
 
 int main()
 {
-	int mines[12];
-	mines[0] = 31;
-	mines[1] = 28;
-	mines[2] = 31;
-	mines[3] = 30;
-	mines[4] = 31;
-	mines[5] = 30;
-	mines[6] = 31;
-	mines[7] = 31;
-	mines[8] = 30;
-	mines[9] = 31;
-	mines[10] = 30;
-	mines[11] = 31;
+	int months[12];
+	months[0] = 31;
+	months[1] = 28;
+	months[2] = 31;
+	months[3] = 30;
+	months[4] = 31;
+	months[5] = 30;
+	months[6] = 31;
+	months[7] = 31;
+	months[8] = 30;
+	months[9] = 31;
+	months[10] = 30;
+	months[11] = 31;
 	
 	int year;
 	int days = 0;
 	int month = 0;
-	int fores = 0;
+	int times = 0;
 	
 	for(month = 0; month < 12; month++)
 	{
@@ -31,30 +31,28 @@ int main()
 	days = days % 7;
 	if(days == 0)
 	{
-		fores++;
+		times++;
 	}
-	printf("DAYS:%d\n",days);
 	for(year = 1901; year <= 2000; year++)
 	{
 		for(month = 0; month < 12; month++)
 		{
 			days = (days % 7);
-			//printf("MERES:%d\n",days);
 			if(days == 6)
 			{
-				fores++;
-				printf("MINAS:%d XRONIA:%d MERES:%d\n", month, year, days);
+				times++;
+				printf("Month: %d Year: %d Day: %d\n", month, year, days);
 			}
 			if(month == 1 && year % 4 == 0 && year % 400 == 0 && year % 100 != 0)
 			{
-				days += mines[month] + 1;
+				days += months[month] + 1;
 			}
 			else
 			{
-				days += mines[month];
+				days += months[month];
 			}
 		}
 	}
-	printf("Apotelesma:%d\n", fores);
+	printf("Result: %d\n", times);
 	return 1;
 }

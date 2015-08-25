@@ -2,59 +2,59 @@
 
 int main()
 {
-	int x1;			//variable declaration type of x1. Use: to store the progress of fibonacci sequence.
-	int x2;			//variable declaration type of x2. Use: to store the progress of fibonacci sequence.
-	int x3;			//variable declaration type of x3. Use: to store the progress of fibonacci sequence.
-	int sum;		//variable declaration type of sum. Use: to store the sum of x1 x2 and x3.
-	int sumEven;	//variable declaration type of sum. Use: to store the sum of the Even sum variables.
+	int x1;
+	int x2;
+	int x3;
+	int sum;
+	int sumEven;
 	
-	x1 = 1;			//variable initialization of x1.
-	x2 = 2;			//variable initialization of x2.
-	x3 = 0;			//variable initialization of x3.
-	sum = 0;		//variable initialization of sum.
-	sumEven = 2;	//variable initialization of sumEven.
+	x1 = 1;
+	x2 = 2;
+	x3 = 0;
+	sum = 0;
+	sumEven = 2;
 	
-	while(sum <= 4000000)				//while loop. Use: to check if sum is above 4.000.000.
+	while(sum <= 4000000)
 	{
-		if(x3 < x2 && x3 < x1)			//if statement. Use: to check which is the smallest variable so we don't mess up the progress we made.
+		if(x3 < x2 && x3 < x1)	//because i dont want to lose my progress with a wrong addition.
 		{
-			x3 = x1 + x2;				//x3 variable in action. Use: to sum x1 and x2 into x3.
-			sum = x3;					//sum variable in action. Use: to store x3.
-			if(x3 > 4000000)			//if statement. Use: to check if sum/x3 is > 4.000.000.
+			x3 = x1 + x2;
+			sum = x3;
+			if(x3 > 4000000)
 			{
-				break;					//use of break. Use: to stop the loop.
+				break;
 			}
-			if(x3 % 2 == 0)				//if statement. Use: to check if x3 is even number.
+			if(x3 % 2 == 0)
 			{
-				sumEven = sumEven + x3;	//sumEven variable in action. Use: to sum up all even fibonacci numbers.
+				sumEven = sumEven + x3;
 			}
 		}
-		else if(x2 < x3 && x2 < x1)		//same as before but for x2.
+		else if(x2 < x3 && x2 < x1)	//because i dont want to lose my progress with a wrong addition.
 		{
-			x2 = x1 + x3;				//same as before but for x1 and x3.
-			sum = x2;					//same as before but for x2.
-			if(x2 > 4000000)			//same as before but for x2.
+			x2 = x1 + x3;
+			sum = x2;
+			if(x2 > 4000000)
 			{
-				break;					//same as before.
+				break;
 			}
-			if(x2 % 2 == 0)				//same as before but for x2.
+			if(x2 % 2 == 0)
 			{
-				sumEven = sumEven + x2;	//same as before.
+				sumEven = sumEven + x2;
 			}
 		}
-		else if(x1 < x2 && x1 < x3)		//same as before but fore x1.
+		else if(x1 < x2 && x1 < x3)	//because i dont want to lose my progress with a wrong addition.
 		{
-			x1 = x2 + x3;				//same as before but for x2 and x3.
-			sum = x1;					//same as before but for x1.
-			if(x1 > 4000000)			//same as before but for x1.
+			x1 = x2 + x3;
+			sum = x1;
+			if(x1 > 4000000)
 			{
-				break;					//same as before.
+				break;
 			}
-			if(x1 % 2 == 0)				//same as before but for x1.
+			if(x1 % 2 == 0)
 			{
-				sumEven = sumEven + x1;	//same as before.
+				sumEven = sumEven + x1;
 			}
 		}
 	}
-	printf("%d\n", sumEven);			//printf function of stdio.h library. Use: to let the user know the output of the calcualtion.
+	printf("%d\n", sumEven);
 }

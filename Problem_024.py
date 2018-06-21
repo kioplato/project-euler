@@ -1,6 +1,8 @@
 #!/usr/bin/python2.7
 # Problem_024.py
 
+import sys
+
 def next_lexical_permutation(number_list):
     number_list_len = len(number_list)
     # Locate pivot's index.
@@ -34,6 +36,8 @@ if __name__ == '__main__':
     permute_list = number_list
     for i in range(1, n_permutations):
         permute_list = next_lexical_permutation(permute_list)
+        if permute_list == None:
+            sys.exit(0)
     s = reduce(lambda x,y: x+str(y), permute_list, '')
     number = int(s)
     print(number)
